@@ -13,75 +13,54 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(
+        title: "Network Image",
+      ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
+
   final String title;
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 20;
-
-  void _decreamentCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  void _divideCounter(){
-    setState(() {
-      _counter = _counter ~/ 2;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
+      
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'The button will do the dividation and subtraction',
+          child: Column(children: <Widget>[
+        Container(
+          padding: EdgeInsets.all(15),
+          margin: EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(0),
+            border: Border.all(
+              color: Colors.black,
+              width: 5,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          FloatingActionButton(
-            onPressed: _decreamentCounter,
-            tooltip: 'Decrement',
-            child: const Icon(Icons.remove),
           ),
-          
-          FloatingActionButton(
-            onPressed: _divideCounter,
-            tooltip: 'Divide',
-            child: const Icon(Icons.percent),
-          )
-        ],
-      ),
-    
+          child: Image.network(
+              'https://miro.medium.com/max/828/1*nylReBLb1kY5fvg4QIgzKQ.png'),
+        ),
+        Text(
+          'Welcome to Flutter Tutorial on Network Image',
+          style:
+              TextStyle(fontSize: 25, color: Colors.black, fontFamily: "Arial"),
+        ),
+      ])),
     );
+    // )
   }
 }
